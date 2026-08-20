@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Shin 💗</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700;800&family=Pacifico&display=swap');
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    font-family: "Baloo 2", system-ui, sans-serif;
+    color: #5d4350;
+    background: #fff5fa;
+    overflow-x: hidden;
+  }
+
+  .bg-heart {
+    position: fixed;
+    pointer-events: none;
+    opacity: .25;
+    font-size: 22px;
+    animation: float 8s linear infinite;
+    z-index: 0;
+  }
+  @keyframes float {
+    from { transform: translateY(110vh) rotate(0deg); }
+    to { transform: translateY(-15vh) rotate(360deg); }
+  }
+
+  section {
+    min-height: 100vh;
+    padding: 70px 20px;
+    display: grid;
+    place-items: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .card {
+    width: min(900px, 94vw);
+    padding: clamp(28px, 6vw, 60px);
+    background: rgba(255,255,255,.82);
+    border: 3px solid #ffd1e1;
+    border-radius: 38px;
+    box-shadow: 0 20px 60px rgba(196, 103, 139, .14);
+    text-align: center;
+    backdrop-filter: blur(8px);
+  }
+
+  .tiny { font-size: 1rem; opacity: .75; }
+  h1, h2 { margin: 10px 0 18px; line-height: 1.05; }
+  h1 { font-size: clamp(3.2rem, 9vw, 7rem); color: #e85d88; }
+  h2 { font-size: clamp(2.2rem, 6vw, 4.3rem); color: #d9537e; }
+  .script { font-family: Pacifico, cursive; color: #d9537e; }
+  p { font-size: clamp(1.05rem, 2.2vw, 1.35rem); line-height: 1.65; margin: 12px auto; max-width: 700px; }
+
+  .subtitle {
+    font-size: clamp(1.2rem, 3vw, 1.6rem);
+    margin-bottom: 28px;
+  }
+
+  button {
+    border: 0;
+    font: inherit;
+    font-weight: 800;
+    font-size: 1.1rem;
+    color: white;
+    background: #e85d88;
+    padding: 15px 27px;
+    border-radius: 999px;
+    cursor: pointer;
+    box-shadow: 0 9px 0 #c94770;
+    transition: transform .15s, box-shadow .15s;
+    margin: 8px;
+  }
+  button:hover { transform: translateY(-3px) rotate(-1deg); box-shadow: 0 12px 0 #c94770; }
+  button:active { transform: translateY(4px); box-shadow: 0 4px 0 #c94770; }
+  .secondary { background: #b99be8; box-shadow: 0 9px 0 #9273c2; }
+
+  .sticker {
+    display: inline-block;
+    padding: 10px 18px;
+    border-radius: 18px;
+    background: #fff0f6;
+    border: 2px dashed #ffadc7;
+    transform: rotate(-2deg);
+    margin-bottom: 15px;
+    font-weight: 700;
+  }
+
+  .incident {
+    margin: 28px auto;
+    max-width: 650px;
+    background: #2f2b33;
+    color: #fdf5fa;
+    text-align: left;
+    border-radius: 22px;
+    padding: 25px;
+    box-shadow: 0 12px 0 #e9b3c6;
+    font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+    font-size: .98rem;
+  }
+  .terminal-title { color: #ff9fbd; margin-bottom: 15px; }
+  .line { margin: 8px 0; }
+  .red { color: #ff9fbd; }
+  .green { color: #bdf3c8; }
+
+  .equation {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+    margin: 35px 0;
+    font-size: clamp(1.6rem, 4vw, 2.8rem);
+    font-weight: 800;
+  }
+  .eqbox {
+    padding: 16px 25px;
+    border-radius: 24px;
+    background: #fff;
+    border: 3px solid #ffd1e1;
+  }
+  .wrong { border-color: #ff9f9f; }
+  .right { border-color: #a9e5b4; }
+
+  .bear {
+    font-size: clamp(5rem, 15vw, 9rem);
+    animation: bob 2.2s ease-in-out infinite;
+    display: inline-block;
+  }
+  @keyframes bob { 50% { transform: translateY(-10px) rotate(2deg); } }
+
+  .heart {
+    position: fixed;
+    z-index: 20;
+    pointer-events: none;
+    animation: pop 1.2s ease-out forwards;
+    font-size: 24px;
+  }
+  @keyframes pop {
+    0% { opacity: 1; transform: translate(0,0) scale(.5); }
+    100% { opacity: 0; transform: translate(var(--x), var(--y)) scale(1.5) rotate(25deg); }
+  }
+
+  .secret {
+    display: none;
+    margin-top: 20px;
+    padding: 20px;
+    border-radius: 22px;
+    background: #fff0f6;
+    border: 2px solid #ffd1e1;
+    font-size: 1.25rem;
+    animation: appear .5s ease;
+  }
+  .secret.show { display: block; }
+  @keyframes appear { from {opacity:0; transform:scale(.95)} to {opacity:1; transform:scale(1)} }
+
+  .nav {
+    position: fixed;
+    bottom: 18px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    background: rgba(255,255,255,.9);
+    border: 2px solid #ffd1e1;
+    border-radius: 999px;
+    padding: 7px 12px;
+    box-shadow: 0 8px 30px rgba(100,50,80,.12);
+  }
+  .nav a {
+    text-decoration: none;
+    color: #b34c74;
+    font-weight: 800;
+    margin: 0 8px;
+    font-size: .9rem;
+  }
+
+  .footer {
+    font-size: .9rem;
+    opacity: .65;
+    margin-top: 30px;
+  }
+
+  @media (max-width: 600px) {
+    .nav a { margin: 0 4px; font-size: .78rem; }
+    section { padding-bottom: 95px; }
+  }
+</style>
+</head>
+<body>
+
+<script>
+  const emojis = ["💗","♡","✨","🌸","💞","🎀"];
+  for (let i = 0; i < 18; i++) {
+    const s = document.createElement("span");
+    s.className = "bg-heart";
+    s.textContent = emojis[Math.floor(Math.random()*emojis.length)];
+    s.style.left = Math.random()*100 + "vw";
+    s.style.animationDelay = (-Math.random()*8) + "s";
+    s.style.animationDuration = (6 + Math.random()*6) + "s";
+    document.body.appendChild(s);
+  }
+</script>
+
+<nav class="nav">
+  <a href="#hello">🏠</a>
+  <a href="#vv">VV</a>
+  <a href="#ctrlv">CTRL+V</a>
+  <a href="#sorry">💗</a>
+</nav>
+
+<section id="hello">
+  <div class="card">
+    <div class="sticker">⚠️ VERY SERIOUS WEBSITE ⚠️</div>
+    <div class="bear">🧸</div>
+    <h1>Hi, Shin 🥹</h1>
+    <p class="subtitle">I think we have a tiny little misunderstanding...</p>
+    <p>And before my brain makes this even more awkward, I made you an entire of this . 😭</p>
+    <button onclick="go('#vv'); hearts()">click me pls 🥺👉👈</button>
+    <p class="tiny">No serious meeting. Promise.</p>
+  </div>
+</section>
+
+<section id="vv">
+  <div class="card">
+    <div class="sticker">📁 CASE FILE: THE VV INCIDENT</div>
+    <h2>The Case of the<br><span class="script">Very Misunderstood VV™</span></h2>
+
+    <p>Shin, I'm sorry if what I said made you think that <b>“VV = bobo.”</b> 😭</p>
+    <p style="font-size:1.7rem"><b>IT WASN'T LIKE THATTTT. 😭</b></p>
+    <p>It was just a laugh / silly reaction. Nothing more. HAHAHA.</p>
+
+    <div class="equation">
+      <div class="eqbox wrong">VV = BOBO ❌</div>
+      <div>≠</div>
+      <div class="eqbox right">VV = RANDOM LAUGH 😂</div>
+    </div>
+
+    <button onclick="document.getElementById('vvsecret').classList.toggle('show'); hearts()">prove it 👀</button>
+    <div id="vvsecret" class="secret">
+      <b>OFFICIAL STATEMENT:</b><br>
+      VV was never intended as “bobo.”<br>
+      It was simply me laughing / being silly. 😭💗
+    </div>
+  </div>
+</section>
+
+<section id="ctrlv">
+  <div class="card">
+    <div class="sticker">⌨️ THE KEYBOARD DEFENSE</div>
+    <h2>And then...</h2>
+    <p class="subtitle"><b>THE CTRL + V CRIME 💀</b></p>
+
+    <div class="incident">
+      <div class="terminal-title">╭─ CHAT.EXE ─────────────────╮</div>
+      <div class="line">ME: typing something normal...</div>
+      <div class="line">ME: <span class="green">CTRL + V</span></div>
+      <div class="line red">KEYBOARD: 😈</div>
+      <div class="line">MESSAGE SENT: <b>HAHAHAHAHAHAHAHAHvv</b></div>
+      <div class="line">ME: ............</div>
+      <div class="line">SHIN: 🤨</div>
+      <div class="line red">ME: 💀</div>
+      <div class="terminal-title">╰──────────────────────────╯</div>
+    </div>
+
+    <p>So yes... I was trying to <b>CTRL + V</b> what I had typed, and somehow <b>VV</b> ended up being the thing you saw. 😭</p>
+    <p><b>My keyboard betrayed me.</b><br>
+    <b>My brain betrayed me.</b><br>
+    <b>CTRL + V betrayed me.</b></p>
+
+    <button onclick="hearts(); this.textContent='CTRL + V IS ON PROBATION 😭'">sentence CTRL + V 🔨</button>
+  </div>
+</section>
+
+<section id="sorry">
+  <div class="card">
+    <div class="bear">🐻‍❄️💗</div>
+    <h2>But seriously, Shin...</h2>
+    <p>If it came across the wrong way, I'm really sorry. 🥹</p>
+    <p>I really <b>wasn't trying to call you bobo</b> or insult you.</p>
+    <p>It was just a dumb/funny chat moment that unfortunately looked WAY different through text. 😭</p>
+    <p><b>I hope you know I wasn't trying to hurt or disrespect you.</b></p>
+
+    <div style="margin-top:30px">
+      <h2 style="font-size:2.5rem">Peace? 🥺👉👈</h2>
+      <button onclick="forgive(true)">YES 🥹💗</button>
+      <button class="secondary" onclick="forgive(false)">NO 😤</button>
+    </div>
+
+    <div id="answer" class="secret"></div>
+
+    <p class="footer">P.S. CTRL + V is officially on probation.</p>
+  </div>
+</section>
+
+<script>
+  function go(id) { document.querySelector(id).scrollIntoView({behavior:"smooth"}); }
+
+  function hearts() {
+    for (let i=0; i<12; i++) {
+      const h = document.createElement("span");
+      h.className = "heart";
+      h.textContent = ["💗","💖","💕","✨"][Math.floor(Math.random()*4)];
+      h.style.left = (45 + Math.random()*10) + "vw";
+      h.style.top = (45 + Math.random()*10) + "vh";
+      h.style.setProperty("--x", (Math.random()*240-120)+"px");
+      h.style.setProperty("--y", (-80-Math.random()*220)+"px");
+      document.body.appendChild(h);
+      setTimeout(()=>h.remove(), 1300);
+    }
+  }
+
+  function forgive(yes) {
+    const box = document.getElementById("answer");
+    box.classList.add("show");
+    if (yes) {
+      box.innerHTML = "YAYYYYY 😭💗<br><small>Shin has forgiven the silly human.</small>";
+      hearts();
+    } else {
+      box.innerHTML = "WAIT WAIT WAIT 😭<br><small>Please reconsider... I Made this whole website. 🥹</small>";
+    }
+  }
+</script>
+</body>
+</html>
